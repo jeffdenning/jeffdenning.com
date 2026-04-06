@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jeff Denning — Personal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --ink:      #1a1a18;
+      --muted:    #6b6b65;
+      --rule:     #ddddd8;
+      --bg:       #f7f6f2;   /* slightly warmer than academic site */
+      --accent:   #3a7d44;   /* forest green — outdoors feel */
+      --accent-h: #2c6035;
+      --serif:    'Libre Baskerville', Georgia, serif;
+      --sans:     'DM Sans', system-ui, sans-serif;
+      --max:      720px;
+      --gutter:   clamp(1.25rem, 5vw, 3rem);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--ink);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { color: var(--accent-h); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+
+    .site {
+      max-width: calc(var(--max) + var(--gutter) * 2);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding: 2.25rem 0 2rem;
+      border-bottom: 1px solid var(--rule);
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .site-name {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+    }
+    .back-link {
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: color 0.15s;
+      text-decoration: none;
+    }
+    .back-link:hover { color: var(--ink); text-decoration: none; }
+
+    /* Hero */
+    .hero {
+      padding: 3.5rem 0 1rem;
+      opacity: 0;
+      animation: fadeUp 0.5s ease 0.05s forwards;
+    }
+    .hero-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--ink);
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      font-size: 1.02rem;
+      color: var(--muted);
+      max-width: 540px;
+      line-height: 1.65;
+    }
+
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+    /* Sections */
+    .section {
+      padding: 3rem 0;
+      border-top: 1px solid var(--rule);
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeUp 0.5s ease forwards;
+    }
+    .section:nth-child(1) { animation-delay: 0.1s; }
+    .section:nth-child(2) { animation-delay: 0.2s; }
+    .section:nth-child(3) { animation-delay: 0.3s; }
+    .section:nth-child(4) { animation-delay: 0.4s; }
+
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .section-icon { font-size: 1.1rem; }
+    .section-title {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    /* Photo year grid */
+    .year-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .year-chip {
+      display: inline-block;
+      padding: 0.3rem 0.75rem;
+      border: 1px solid var(--rule);
+      border-radius: 2rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+      background: #fff;
+      transition: border-color 0.15s, color 0.15s, background 0.15s;
+      text-decoration: none;
+    }
+    .year-chip:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: #f0faf2;
+      text-decoration: none;
+    }
+
+    /* Trip list */
+    .trip-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0.5rem 1.5rem;
+    }
+    .trip-item {
+      font-size: 0.88rem;
+      padding: 0.3rem 0;
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .trip-item::before { content: '↗'; font-size: 0.7rem; color: var(--muted); flex-shrink: 0; }
+    .trip-item a { color: var(--ink); }
+    .trip-item a:hover { color: var(--accent); }
+
+    /* Slam section */
+    .slam-body { font-size: 0.94rem; color: var(--ink); line-height: 1.7; }
+    .slam-body p { margin-bottom: 0.9rem; }
+    .slam-body p:last-child { margin-bottom: 0; }
+    .slam-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.25rem;
+    }
+    .slam-link {
+      display: inline-block;
+      padding: 0.4rem 1rem;
+      border: 1px solid var(--accent);
+      border-radius: 3px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--accent);
+      text-decoration: none;
+      transition: background 0.15s, color 0.15s;
+    }
+    .slam-link:hover { background: var(--accent); color: #fff; text-decoration: none; }
+
+    /* Footer */
+    footer {
+      padding: 2.5rem 0;
+      border-top: 1px solid var(--rule);
+      font-size: 0.8rem;
+      color: var(--muted);
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+<div class="site">
+
+  <header>
+    <span class="site-name">Jeff Denning</span>
+    <a class="back-link" href="index.html">← Academic site</a>
+  </header>
+
+  <div class="hero">
+    <div class="hero-label">Personal</div>
+    <h1>Life Outside Economics</h1>
+    <p>Fishing, backpacking, and spending time in the mountains. Most of it documented in too many Google Photos albums.</p>
+  </div>
+
+  <main>
+
+    <!-- Fish photos by year -->
+    <div class="section">
+      <div class="section-head">
+        <span class="section-icon">🎣</span>
+        <span class="section-title">Fish photos by year</span>
+      </div>
+      <p style="font-size:0.88rem; color:var(--muted); margin-bottom:1.1rem;">
+        An album of every fish I photographed, year by year.
+      </p>
+      <div class="year-grid">
+        <a class="year-chip" href="https://photos.app.goo.gl/gNlZ62PLZw0iFADB2" target="_blank" rel="noopener">2017</a>
+        <a class="year-chip" href="https://photos.app.goo.gl/jUU3VmzX29YqKgMQA" target="_blank" rel="noopener">2018</a>
+        <a class="year-chip" href="https://photos.app.goo.gl/1UNqk2Hogk2ZbhjW9" target="_blank" rel="noopener">2019</a>
+        <a class="year-chip" href="https://photos.app.goo.gl/FfrAkXsBeetEnA3g9" target="_blank" rel="noopener">2020</a>
+        <a class="year-chip" href="https://photos.app.goo.gl/WgXaa3jUdDDbwxTc8" target="_blank" rel="noopener">2021</a>
+        <a class="year-chip" href="https://photos.app.goo.gl/Ya3YD5zJ3YjLtRxMA" target="_blank" rel="noopener">2022</a>
+        <a class="year-chip" href="https://photos.app.goo.gl/SjZSdPHUYp1PkvWz8" target="_blank" rel="noopener">2023</a>
+      </div>
+    </div>
+
+    <!-- Hiking & backpacking -->
+    <div class="section">
+      <div class="section-head">
+        <span class="section-icon">🏔</span>
+        <span class="section-title">Hiking &amp; backpacking</span>
+      </div>
+      <p style="font-size:0.88rem; color:var(--muted); margin-bottom:1.1rem;">
+        Photo albums from various trips over the years.
+      </p>
+      <div class="trip-list">
+        <div class="trip-item"><a href="https://photos.app.goo.gl/UoL21h1gEQLUzyQn7" target="_blank" rel="noopener">Austria 2019</a></div>
+        <div class="trip-item"><a href="https://photos.app.goo.gl/TLRGXk3ZQSCBUCTz5" target="_blank" rel="noopener">Uintas 2020 (I)</a></div>
+        <div class="trip-item"><a href="https://photos.app.goo.gl/rk3bgKMfz67HKcKn6" target="_blank" rel="noopener">Uintas 2020 (II)</a></div>
+        <div class="trip-item"><a href="https://photos.app.goo.gl/S7MZs4yxJYht6ZUD8" target="_blank" rel="noopener">Uintas 2021</a></div>
+        <div class="trip-item"><a href="https://photos.app.goo.gl/J47NLPmTVtgzXmSf9" target="_blank" rel="noopener">Wind Rivers 2021</a></div>
+        <div class="trip-item"><a href="https://photos.app.goo.gl/ncD9njhcnh4X9K7T8" target="_blank" rel="noopener">Golden Trout 2021</a></div>
+        <div class="trip-item"><a href="https://photos.app.goo.gl/f5K7mMfvFbuJTjM6A" target="_blank" rel="noopener">Kalalau 2022</a></div>
+        <div class="trip-item"><a href="https://photos.app.goo.gl/ZWoJLVxRntLxkYjX7" target="_blank" rel="noopener">Wyoming 2022</a></div>
+        <div class="trip-item"><a href="https://photos.app.goo.gl/M6P8QUQfjSXBUcdB9" target="_blank" rel="noopener">Timpanogos</a></div>
+        <div class="trip-item"><a href="https://photos.app.goo.gl/d3jjDCwK4cJxtMLm7" target="_blank" rel="noopener">Wind Rivers 2022</a></div>
+        <div class="trip-item"><a href="https://photos.app.goo.gl/G8nSa2bHxDvZvyVm7" target="_blank" rel="noopener">Wind Rivers 2023</a></div>
+      </div>
+    </div>
+
+    <!-- Utah Cutthroat Slam -->
+    <div class="section">
+      <div class="section-head">
+        <span class="section-icon">🏆</span>
+        <span class="section-title">Utah Cutthroat Slam</span>
+      </div>
+      <div class="slam-body">
+        <p>
+          I completed the <a href="http://www.utahcutthroatslam.org/" target="_blank" rel="noopener">Utah Cutthroat Slam</a> twice in 2016.
+          The Slam requires catching all four native cutthroat trout species of Utah — Bonneville, Bear River,
+          Yellowstone, and Colorado — in their native ranges in a single season. Proceeds support
+          cutthroat trout restoration projects across the state.
+        </p>
+        <p>
+          My colleagues Mike, Rulon, and I attempted the first slam in a single day, leaving at 6:15am
+          and working through all four native ranges before dark. The Bonneville came first from a beaver pond,
+          the Bear River followed in a brisk canyon stream, and we finished with the Yellowstone and Colorado
+          further south. Mike and I each completed the slam; Rulon caught the largest fish of the day.
+        </p>
+        <p>
+          The second slam followed later that same year, and the whole experience ended up getting some outside coverage.
+        </p>
+        <div class="slam-links">
+          <a class="slam-link" href="https://photos.google.com/share/AF1QipPZh9R0D1MH1j6RpKdkRR5XsuezGbRp8fSZuX-zgoZcd3ZeyfJbFmvEiV3b9tn4Lw?key=UjM4amdDdkdjRUNfOW4xMGxKT1FYQXc4YjdEYm9B" target="_blank" rel="noopener">Second slam photos</a>
+          <a class="slam-link" href="https://vamooseutah.com/?p=2780" target="_blank" rel="noopener">Press coverage</a>
+          <a class="slam-link" href="http://www.utahcutthroatslam.org/" target="_blank" rel="noopener">Utah Cutthroat Slam</a>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <span>Jeff Denning</span>
+    <span><a href="index.html">← Back to academic site</a> &nbsp;·&nbsp; <a href="mailto:jeffdenning@utexas.edu">jeffdenning@utexas.edu</a></span>
+  </footer>
+
+</div>
+</body>
+</html>
