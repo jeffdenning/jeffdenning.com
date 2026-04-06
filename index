@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jeff Denning — Economist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --ink:        #1a1a18;
+      --muted:      #6b6b65;
+      --rule:       #ddddd8;
+      --bg:         #faf9f7;
+      --accent:     #2a5caa;
+      --accent-h:   #1e4690;
+      --serif:      'Libre Baskerville', Georgia, serif;
+      --sans:       'DM Sans', system-ui, sans-serif;
+      --max:        760px;
+      --gutter:     clamp(1.25rem, 5vw, 3rem);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--ink);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { color: var(--accent-h); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+
+    .site {
+      max-width: calc(var(--max) + var(--gutter) * 2);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding: 2.25rem 0 2rem;
+      border-bottom: 1px solid var(--rule);
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .site-name {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+    }
+    nav { display: flex; gap: 1.6rem; flex-wrap: wrap; }
+    nav a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color 0.15s;
+    }
+    nav a:hover { color: var(--ink); text-decoration: none; }
+    nav a.active { color: var(--ink); border-bottom: 1.5px solid var(--ink); padding-bottom: 1px; }
+
+    /* Sections */
+    section {
+      padding: 4rem 0;
+      border-bottom: 1px solid var(--rule);
+      opacity: 0;
+      transform: translateY(18px);
+      animation: fadeUp 0.5s ease forwards;
+    }
+    section:nth-child(1) { animation-delay: 0.05s; }
+    section:nth-child(2) { animation-delay: 0.15s; }
+    section:nth-child(3) { animation-delay: 0.25s; }
+    section:nth-child(4) { animation-delay: 0.35s; }
+    section:last-child { border-bottom: none; }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+    .section-label {
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 1.75rem;
+      color: var(--ink);
+    }
+
+    /* Bio */
+    .bio-wrap {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2.5rem;
+      align-items: start;
+    }
+    .bio-text p { color: var(--ink); margin-bottom: 1rem; font-size: 1.02rem; }
+    .bio-text p:last-child { margin-bottom: 0; }
+    .bio-meta {
+      font-size: 0.875rem; color: var(--muted);
+      margin-top: 1.4rem; display: flex; flex-direction: column; gap: 0.35rem;
+    }
+    .bio-meta a { color: var(--muted); }
+    .bio-meta a:hover { color: var(--accent); }
+    .bio-photo { width: 140px; height: 175px; object-fit: cover; border-radius: 2px; filter: grayscale(12%); }
+    .bio-photo-placeholder {
+      width: 140px; height: 175px; background: var(--rule); border-radius: 2px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem; color: var(--muted); text-align: center; line-height: 1.4; padding: 0.5rem;
+    }
+
+    /* Research */
+    .research-group { margin-bottom: 2.75rem; }
+    .research-group:last-child { margin-bottom: 0; }
+    .research-group-label {
+      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--muted);
+      margin-bottom: 1.1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--rule);
+    }
+    .paper { padding: 0.85rem 0; border-bottom: 1px solid var(--rule); }
+    .paper:last-child { border-bottom: none; }
+    .paper-title { font-family: var(--serif); font-size: 0.97rem; font-style: italic; color: var(--ink); line-height: 1.45; }
+    .paper-title a { color: var(--ink); font-style: italic; }
+    .paper-title a:hover { color: var(--accent); }
+    .paper-meta { font-size: 0.825rem; color: var(--muted); margin-top: 0.2rem; line-height: 1.5; }
+    .paper-meta .journal { font-style: italic; }
+    .paper-note { font-size: 0.78rem; color: var(--muted); margin-top: 0.25rem; }
+    .paper-note a { color: var(--muted); font-size: 0.78rem; }
+    .paper-note a:hover { color: var(--accent); }
+
+    /* CV */
+    .cv-row { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+    .cv-btn {
+      display: inline-block; padding: 0.55rem 1.25rem;
+      background: var(--accent); color: #fff !important; border-radius: 3px;
+      font-size: 0.8rem; font-weight: 500; letter-spacing: 0.03em; text-transform: uppercase;
+      text-decoration: none !important; transition: background 0.15s;
+    }
+    .cv-btn:hover { background: var(--accent-h) !important; }
+
+    /* ── Teaching / File Tree ── */
+    .teaching-intro {
+      font-size: 0.875rem; color: var(--muted); margin-bottom: 2rem; line-height: 1.65;
+    }
+    .teaching-intro code {
+      font-family: 'Courier New', monospace; font-size: 0.8rem;
+      background: #ededea; padding: 0.15em 0.4em; border-radius: 3px; color: var(--ink);
+    }
+
+    /* Config panel */
+    .github-config {
+      background: #f0f4fb; border: 1px solid #c8d8f0; border-radius: 4px;
+      padding: 1rem 1.25rem; margin-bottom: 1.75rem; font-size: 0.83rem; color: #2a4a80;
+    }
+    .github-config strong { display: block; margin-bottom: 0.5rem; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; }
+    .config-fields { display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: flex-end; }
+    .config-fields label { display: flex; flex-direction: column; gap: 0.25rem; font-size: 0.8rem; color: var(--muted); }
+    .config-fields input {
+      font-family: 'Courier New', monospace; font-size: 0.82rem;
+      padding: 0.35rem 0.55rem; border: 1px solid var(--rule); border-radius: 3px;
+      background: #fff; color: var(--ink); width: 175px;
+    }
+    .config-fields input:focus { outline: 2px solid var(--accent); border-color: transparent; }
+    .config-btn {
+      padding: 0.4rem 1rem; background: var(--accent); color: #fff; border: none;
+      border-radius: 3px; font-size: 0.8rem; font-weight: 500; cursor: pointer;
+      white-space: nowrap; transition: background 0.15s; align-self: flex-end; margin-bottom: 1px;
+    }
+    .config-btn:hover { background: var(--accent-h); }
+    .config-hint { margin-top: 0.6rem; font-size: 0.74rem; color: var(--muted); }
+
+    /* Loading / status */
+    .tree-status {
+      font-size: 0.85rem; color: var(--muted); padding: 1.5rem 0;
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .spinner {
+      width: 14px; height: 14px; border: 2px solid var(--rule);
+      border-top-color: var(--accent); border-radius: 50%;
+      animation: spin 0.7s linear infinite; flex-shrink: 0;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Tree */
+    .file-tree { margin-top: 0.25rem; }
+    .tree-folder { margin-bottom: 1.5rem; }
+
+    .tree-folder-header {
+      display: flex; align-items: center; gap: 0.55rem;
+      padding: 0.55rem 0; cursor: pointer; border-bottom: 1px solid var(--rule);
+      user-select: none;
+    }
+    .tree-folder-header:hover .folder-name { color: var(--accent); }
+    .chevron {
+      font-size: 0.7rem; color: var(--muted);
+      transition: transform 0.2s; display: inline-block;
+    }
+    .chevron.open  { transform: rotate(90deg); }
+    .chevron.closed { transform: rotate(0deg); }
+    .folder-name {
+      font-family: var(--serif); font-size: 1rem; font-weight: 700;
+      color: var(--ink); transition: color 0.15s;
+    }
+    .folder-count { font-size: 0.75rem; color: var(--muted); margin-left: auto; }
+
+    .tree-files {
+      overflow: hidden;
+      transition: max-height 0.25s ease, opacity 0.2s ease;
+    }
+    .tree-files.collapsed { max-height: 0 !important; opacity: 0; pointer-events: none; }
+    .tree-files.expanded  { opacity: 1; }
+
+    .tree-file {
+      display: flex; align-items: center; gap: 0.6rem;
+      padding: 0.45rem 0 0.45rem 1.5rem; border-bottom: 1px solid var(--rule); font-size: 0.875rem;
+    }
+    .tree-file:last-child { border-bottom: none; }
+    .file-icon { font-size: 0.85rem; color: var(--muted); flex-shrink: 0; }
+    .file-link { color: var(--ink); flex: 1; }
+    .file-link:hover { color: var(--accent); text-decoration: underline; }
+    .file-size { font-size: 0.74rem; color: var(--muted); white-space: nowrap; }
+
+    /* Nested sub-folders */
+    .tree-subfolder .tree-folder-header { padding-left: 1.5rem; }
+    .tree-subfolder .tree-file { padding-left: 3rem; }
+
+    .tree-error {
+      font-size: 0.84rem; color: #9b3030;
+      background: #fff5f5; border: 1px solid #f0c8c8;
+      border-radius: 3px; padding: 0.75rem 1rem; margin-top: 0.5rem;
+    }
+
+    /* Footer */
+    footer {
+      padding: 2.5rem 0; font-size: 0.8rem; color: var(--muted);
+      display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: space-between;
+    }
+
+    @media (max-width: 540px) {
+      .bio-wrap { grid-template-columns: 1fr; }
+      .bio-photo, .bio-photo-placeholder { width: 110px; height: 138px; }
+      .config-fields input { width: 140px; }
+    }
+  </style>
+</head>
+<body>
+<div class="site">
+
+  <header>
+    <span class="site-name">Jeff Denning</span>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#cv">CV</a>
+      <a href="#teaching">Teaching</a>
+      <a href="personal.html">Personal</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- About -->
+    <section id="about">
+      <div class="bio-wrap">
+        <div class="bio-text">
+          <p>
+            I am an Associate Professor at the University of Texas at Austin
+            <a href="https://lbj.utexas.edu/">LBJ School of Public Affairs</a> and
+            <a href="https://education.utexas.edu/departments/educational-leadership-policy">Department of Educational Leadership and Policy</a>,
+            a <a href="https://nber.org/">NBER</a> Research Associate,
+            an <a href="https://www.iza.org/">IZA</a> Research Fellow,
+            and a <a href="https://www.cesifo.org/en">CESifo</a> Research Affiliate.
+          </p>
+          <p>
+            My research focuses on the economics of education — with particular emphasis on
+            student loans, college completion, financial aid, and how institutions respond
+            to policy changes.
+          </p>
+          <div class="bio-meta">
+            <span>📧 <a href="mailto:jeffdenning@utexas.edu">jeffdenning@utexas.edu</a></span>
+            <span>
+              <a href="https://scholar.google.com/citations?user=urRcGjFuzK8C&hl=en">Google Scholar</a>
+              &nbsp;·&nbsp;
+              <a href="https://twitter.com/JeffDenning">X / Twitter</a>
+              &nbsp;·&nbsp;
+              <a href="https://www.linkedin.com/in/jeff-denning-44596648/">LinkedIn</a>
+            </span>
+          </div>
+        </div>
+        <!-- Swap this for: <img class="bio-photo" src="photo.jpg" alt="Jeff Denning" /> -->
+        <div class="bio-photo-placeholder">Add photo here</div>
+      </div>
+    </section>
+
+    <!-- Research -->
+    <section id="research">
+      <h2 class="section-label">Research</h2>
+
+      <div class="research-group">
+        <div class="research-group-label">Working Papers</div>
+        <div class="paper">
+          <div class="paper-title">PLUS or Minus? The Effect of Graduate School Loans on Access, Attainment, and Prices</div>
+          <div class="paper-meta">With Sandra Black &amp; Lesley J. Turner &nbsp;·&nbsp; <span class="journal">Revise &amp; Resubmit, Journal of Political Economy</span></div>
+          <div class="paper-note"><a href="https://www.nber.org/papers/w31291">NBER Working Paper 31291</a> &nbsp;·&nbsp; Coverage: Hechinger Report, Forbes, Business Insider, Washington Post, The Guardian, Axios, NYT</div>
+        </div>
+        <div class="paper">
+          <div class="paper-title">A Family Affair: The Effects of College on Parent and Student Finances</div>
+          <div class="paper-meta">With Palaash Bhargava, Sandra Black, Robert Fairlie, &amp; Oded Gurantz</div>
+          <div class="paper-note"><a href="https://www.nber.org/papers/w33497">NBER Working Paper 33497</a></div>
+        </div>
+        <div class="paper">
+          <div class="paper-title">Teachers, Grading Leniency, and Student Success</div>
+          <div class="paper-meta">With Rachel Nesbit, Nolan Pope, &amp; Merrill Warnick</div>
+        </div>
+        <div class="paper">
+          <div class="paper-title">Effects of Indigenous Language Instruction</div>
+          <div class="paper-meta">With Randall Akee</div>
+        </div>
+        <div class="paper">
+          <div class="paper-title">Welfare Effects of Changes in College Pricing</div>
+          <div class="paper-meta">With Benjamin M. Marx &amp; Lesley J. Turner</div>
+        </div>
+      </div>
+
+      <div class="research-group">
+        <div class="research-group-label">Publications</div>
+        <div class="paper">
+          <div class="paper-title">The Graduation Part II: Graduate School Graduation Rates</div>
+          <div class="paper-meta"><span class="journal">Journal of Public Economics</span>, 2025, Vol. 248 &nbsp;·&nbsp; With Lesley J. Turner</div>
+        </div>
+        <div class="paper">
+          <div class="paper-title">Taking It to the Limit: Effects of Increased Student Loan Availability on Attainment, Earnings, and Financial Well-Being</div>
+          <div class="paper-meta"><span class="journal">American Economic Review</span>, 2023, Vol. 113, No. 12 &nbsp;·&nbsp; With Sandra Black, Lisa Dettling, Sarena Goodman, &amp; Lesley J. Turner</div>
+        </div>
+        <div class="paper">
+          <div class="paper-title">Class Rank and Long-Run Outcomes</div>
+          <div class="paper-meta"><span class="journal">Review of Economics and Statistics</span>, 2023, Vol. 105, No. 6 &nbsp;·&nbsp; With Richard Murphy &amp; Felix Weinhardt</div>
+        </div>
+        <div class="paper">
+          <div class="paper-title">Winners and Losers? The Effect of Gaining and Losing Access to Selective Colleges on Education and Labor Market Outcomes</div>
+          <div class="paper-meta"><span class="journal">American Economic Journal: Applied Economics</span>, 2023, Vol. 15, No. 1 &nbsp;·&nbsp; With Sandra Black &amp; Jesse Rothstein</div>
+          <div class="paper-note">Coverage: This American Life, The Weeds Podcast, Inside Higher Ed</div>
+        </div>
+        <div class="paper">
+          <div class="paper-title">The Returns to Hours Worked Within and Across Occupations: Implications for the Gender Wage Gap</div>
+          <div class="paper-meta"><span class="journal">ILR Review</span>, 2022, Vol. 75, No. 5 &nbsp;·&nbsp; With Brian Jacob, Lars Lefgren, &amp; Christian vom Lehn</div>
+        </div>
+        <div class="paper">
+          <div class="paper-title">Decreasing Time to Baccalaureate Degree in the United States</div>
+          <div class="paper-meta"><span class="journal">Economics of Education Review</span>, 2022, Vol. 90 &nbsp;·&nbsp; With Eric Eide, Kevin Mumford, &amp; Daniel Sabey*</div>
+        </div>
+        <div class="paper">
+          <div class="paper-title">Why Have College Completion Rates Increased?</div>
+          <div class="paper-meta"><span class="journal">American Economic Journal: Applied Economics</span>, 2022, Vol. 14, No. 3 &nbsp;·&nbsp; With Eric Eide, Kevin Mumford, Rich Patterson, &amp; Merrill Warnick*</div>
+          <div class="paper-note">Coverage: The Atlantic, Chronicle of Higher Education, Education Next, Washington Post, Harvard EdCast, Forbes</div>
+        </div>
+        <div class="paper">
+          <div class="paper-title">Maxed Out? The Effect of Larger Student Loan Limits on Borrowing and Education Outcomes</div>
+          <div class="paper-meta"><span class="journal">Journal of Human Resources</span>, 2021, Vol. 56, No. 4 &nbsp;·&nbsp; With Todd R. Jones</div>
+        </div>
+        <div class="paper">
+          <div class="paper-title">Nudging at Scale: Experimental Evidence from FAFSA Completion Campaigns</div>
+          <div class="paper-meta"><span class="journal">Journal of Economic Behavior and Organization</span>, 2021, Vol. 183 &nbsp;·&nbsp; With Kelli Bird, Benjamin Castleman, Joshua Goodman, Cait Lamberton, &amp; Kelly Rosinger</div>
+        </div>
+        <div class="paper">
+          <div class="paper-title">Born Under a Lucky Star: Financial Aid, College Completion, Labor Supply, and Credit Constraints</div>
+          <div class="paper-meta"><span class="journal">Journal of Human Resources</span>, 2019, Vol. 54, No. 3</div>
+        </div>
+        <div class="paper">
+          <div class="paper-title">ProPelled: The Effects of Grants on Graduation, Earnings, and Welfare</div>
+          <div class="paper-meta"><span class="journal">American Economic Journal: Applied Economics</span>, 2019, Vol. 11, No. 3 &nbsp;·&nbsp; With Benjamin M. Marx &amp; Lesley J. Turner</div>
+          <div class="paper-note">Coverage: New York Times, Wall Street Journal, NPR</div>
+        </div>
+        <div class="paper">
+          <div class="paper-title">Is Information Enough? The Effect of Information about Education Tax Benefits on Student Outcomes</div>
+          <div class="paper-meta"><span class="journal">Journal of Policy Analysis and Management</span>, 2019, Vol. 38, No. 3 &nbsp;·&nbsp; With Peter Bergman &amp; Dayanand Manoli</div>
+        </div>
+        <div class="paper">
+          <div class="paper-title">College on the Cheap: Consequences of Community College Tuition Reductions</div>
+          <div class="paper-meta"><span class="journal">American Economic Journal: Economic Policy</span>, 2017, Vol. 9, No. 2</div>
+        </div>
+        <div class="paper-note" style="padding-top:0.5rem;">* Denotes student coauthor</div>
+      </div>
+    </section>
+
+    <!-- CV -->
+    <section id="cv">
+      <h2 class="section-label">CV</h2>
+      <div class="cv-row">
+        <p style="color:var(--muted); font-size:0.9rem;">Download the most recent version of my curriculum vitae.</p>
+        <a class="cv-btn" href="DenningCV.pdf" target="_blank">Download CV (PDF)</a>
+      </div>
+    </section>
+
+    <!-- Teaching -->
+    <section id="teaching">
+      <h2 class="section-label">Teaching</h2>
+
+      <p class="teaching-intro">
+        Course materials are served directly from a public GitHub repository — no manual updates
+        needed on the website. Just push files to GitHub and they appear here automatically.<br><br>
+        Organize your repo with a folder per course:<br>
+        <code>teaching/Economics-of-Education/syllabus.pdf</code><br>
+        <code>teaching/Economics-of-Education/lecture-01.pdf</code><br>
+        <code>teaching/Applied-Econometrics/syllabus.pdf</code>
+      </p>
+
+      <!--
+        ════════════════════════════════════════════════════════
+        SETUP — do this once:
+
+        1. Go to github.com and create a free account (or log in)
+        2. Create a new PUBLIC repository (e.g. "website" or "teaching")
+        3. Inside the repo, create a folder called "teaching"
+        4. Add one subfolder per course, drop your PDFs in each
+        5. Enter your username + repo name in the fields below
+           and click "Load Files" to test it
+        6. Once working, hardcode the values in the JS block at
+           the bottom of this file and remove this config panel
+
+        GitHub rate limit: 60 unauthenticated requests/hour per IP.
+        For heavy traffic or private repos, add a personal access
+        token (read-only, public_repo scope) as GITHUB_TOKEN below.
+        ════════════════════════════════════════════════════════
+      -->
+      <div class="github-config" id="configPanel">
+        <strong>⚙ One-time GitHub setup</strong>
+        <div class="config-fields">
+          <label>
+            GitHub username
+            <input type="text" id="cfg-user" placeholder="jeffdenning" />
+          </label>
+          <label>
+            Repository name
+            <input type="text" id="cfg-repo" placeholder="website" />
+          </label>
+          <label>
+            Folder path
+            <input type="text" id="cfg-path" placeholder="teaching" value="teaching" />
+          </label>
+          <button class="config-btn" onclick="loadTree()">Load Files</button>
+        </div>
+        <p class="config-hint">
+          After confirming it works, hardcode your username and repo in the JS at the bottom of this
+          file (look for <code>GITHUB_USER</code>) and delete this config panel.
+        </p>
+      </div>
+
+      <div id="teaching-tree"></div>
+    </section>
+
+  </main>
+
+  <footer>
+    <span>Jeff Denning &nbsp;·&nbsp; University of Texas at Austin</span>
+    <span>
+      <a href="mailto:jeffdenning@utexas.edu">jeffdenning@utexas.edu</a>
+      &nbsp;·&nbsp;
+      <a href="personal.html">Personal</a>
+    </span>
+  </footer>
+
+</div><!-- /.site -->
+
+<script>
+/* ════════════════════════════════════════════════════════════════════════════
+   GITHUB CONFIG — fill these in once your repo is set up,
+   then the config panel above is no longer needed and can be deleted.
+
+   const GITHUB_USER  = 'jeffdenning';   // your GitHub username
+   const GITHUB_REPO  = 'website';        // your repo name
+   const TEACHING_PATH = 'teaching';      // folder inside the repo
+   const GITHUB_TOKEN  = '';              // optional: personal access token
+════════════════════════════════════════════════════════════════════════════ */
+let GITHUB_USER   = '';
+let GITHUB_REPO   = '';
+let TEACHING_PATH = 'teaching';
+const GITHUB_TOKEN = '';   // leave blank for public repos
+
+const API = 'https://api.github.com';
+const treeEl = document.getElementById('teaching-tree');
+
+// ── Helpers ────────────────────────────────────────────────────────────────
+
+function apiHeaders() {
+  const h = { Accept: 'application/vnd.github.v3+json' };
+  if (GITHUB_TOKEN) h['Authorization'] = `token ${GITHUB_TOKEN}`;
+  return h;
+}
+
+function formatBytes(b) {
+  if (!b) return '';
+  if (b < 1024) return b + '\u202fB';
+  if (b < 1024 * 1024) return (b / 1024).toFixed(0) + '\u202fKB';
+  return (b / (1024 * 1024)).toFixed(1) + '\u202fMB';
+}
+
+function fileIcon(name) {
+  const ext = name.split('.').pop().toLowerCase();
+  const map = { pdf:'📄', doc:'📝', docx:'📝', xls:'📊', xlsx:'📊',
+                ppt:'📑', pptx:'📑', zip:'🗜', gz:'🗜', jpg:'🖼',
+                jpeg:'🖼', png:'🖼', gif:'🖼', svg:'🖼', r:'📋',
+                py:'📋', do:'📋', ipynb:'📋' };
+  return map[ext] || '📎';
+}
+
+function humanName(raw) {
+  // "econ-of-education_spring-2025" → "Econ of Education — Spring 2025"
+  return raw
+    .replace(/[-_]+/g, ' ')
+    .replace(/\b\w/g, c => c.toUpperCase());
+}
+
+async function fetchContents(path) {
+  const url = `${API}/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${encodeURI(path)}`;
+  const res = await fetch(url, { headers: apiHeaders() });
+  if (res.status === 403) throw new Error('Rate limit exceeded — try again in a moment, or add a GitHub token.');
+  if (res.status === 404) throw new Error(`Path not found: "${path}". Check the repo name and folder path.`);
+  if (!res.ok) throw new Error(`GitHub API error ${res.status}`);
+  return res.json();
+}
+
+// ── Render a single file row ────────────────────────────────────────────────
+
+function renderFile(item, indentLevel = 1) {
+  const div = document.createElement('div');
+  div.className = 'tree-file';
+  div.style.paddingLeft = (indentLevel * 1.5) + 'rem';
+  const url = item.download_url || `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/main/${item.path}`;
+  const label = humanName(item.name.replace(/\.[^.]+$/, '')); // strip extension for display
+  div.innerHTML = `
+    <span class="file-icon">${fileIcon(item.name)}</span>
+    <a class="file-link" href="${url}" target="_blank" rel="noopener">${label}</a>
+    <span class="file-size">${formatBytes(item.size)}</span>
+  `;
+  return div;
+}
+
+// ── Render a folder (recursive) ─────────────────────────────────────────────
+
+async function renderFolder(item, container, depth = 0) {
+  const folderDiv = document.createElement('div');
+  folderDiv.className = depth === 0 ? 'tree-folder' : 'tree-folder tree-subfolder';
+
+  const header = document.createElement('div');
+  header.className = 'tree-folder-header';
+  if (depth > 0) header.style.paddingLeft = (depth * 1.5) + 'rem';
+
+  const countId = 'cnt-' + Math.random().toString(36).slice(2);
+  header.innerHTML = `
+    <span class="chevron open">▶</span>
+    <span class="folder-name">${humanName(item.name)}</span>
+    <span class="folder-count" id="${countId}"></span>
+  `;
+
+  const filesDiv = document.createElement('div');
+  filesDiv.className = 'tree-files expanded';
+  // measure height for smooth collapse
+  filesDiv.style.maxHeight = '9999px';
+
+  header.addEventListener('click', () => {
+    const icon = header.querySelector('.chevron');
+    if (filesDiv.classList.contains('expanded')) {
+      filesDiv.style.maxHeight = filesDiv.scrollHeight + 'px';
+      requestAnimationFrame(() => {
+        filesDiv.style.maxHeight = '0';
+        filesDiv.classList.replace('expanded', 'collapsed');
+        icon.classList.replace('open', 'closed');
+      });
+    } else {
+      filesDiv.style.maxHeight = '9999px';
+      filesDiv.classList.replace('collapsed', 'expanded');
+      icon.classList.replace('closed', 'open');
+    }
+  });
+
+  folderDiv.appendChild(header);
+  folderDiv.appendChild(filesDiv);
+  container.appendChild(folderDiv);
+
+  // Load children
+  try {
+    const children = await fetchContents(item.path);
+    const dirs  = children.filter(c => c.type === 'dir');
+    const files = children.filter(c => c.type === 'file' && !c.name.startsWith('.'));
+
+    const countEl = document.getElementById(countId);
+    if (countEl) {
+      const n = files.length;
+      countEl.textContent = n + ' file' + (n !== 1 ? 's' : '');
+    }
+
+    // Sub-folders first
+    for (const sub of dirs) {
+      await renderFolder(sub, filesDiv, depth + 1);
+    }
+    // Files
+    for (const f of files) {
+      filesDiv.appendChild(renderFile(f, depth + 1));
+    }
+
+    if (dirs.length === 0 && files.length === 0) {
+      const empty = document.createElement('div');
+      empty.style.cssText = 'padding:0.5rem 0 0.5rem 1.5rem; font-size:0.82rem; color:var(--muted);';
+      empty.textContent = 'No files yet';
+      filesDiv.appendChild(empty);
+    }
+  } catch (e) {
+    const err = document.createElement('div');
+    err.className = 'tree-error';
+    err.textContent = 'Could not load folder: ' + e.message;
+    filesDiv.appendChild(err);
+  }
+}
+
+// ── Main load function ───────────────────────────────────────────────────────
+
+async function loadTree() {
+  GITHUB_USER   = (document.getElementById('cfg-user')?.value  || GITHUB_USER).trim();
+  GITHUB_REPO   = (document.getElementById('cfg-repo')?.value  || GITHUB_REPO).trim();
+  TEACHING_PATH = (document.getElementById('cfg-path')?.value  || TEACHING_PATH).trim() || 'teaching';
+
+  if (!GITHUB_USER || !GITHUB_REPO) {
+    treeEl.innerHTML = '<div class="tree-error">Please enter a GitHub username and repository name.</div>';
+    return;
+  }
+
+  treeEl.innerHTML = '<div class="tree-status"><div class="spinner"></div>Loading from GitHub…</div>';
+
+  try {
+    const items = await fetchContents(TEACHING_PATH);
+    treeEl.innerHTML = '';
+
+    const dirs  = items.filter(i => i.type === 'dir');
+    const files = items.filter(i => i.type === 'file' && !i.name.startsWith('.'));
+
+    if (dirs.length === 0 && files.length === 0) {
+      treeEl.innerHTML = '<div class="tree-status">The folder is empty. Add course subfolders and PDFs to your repo.</div>';
+      return;
+    }
+
+    const wrap = document.createElement('div');
+    wrap.className = 'file-tree';
+    treeEl.appendChild(wrap);
+
+    // Top-level loose files (unusual but handle gracefully)
+    for (const f of files) wrap.appendChild(renderFile(f, 0));
+    // Course folders
+    for (const d of dirs) await renderFolder(d, wrap, 0);
+
+  } catch (e) {
+    treeEl.innerHTML = `
+      <div class="tree-error">
+        <strong>Could not load files.</strong><br>
+        ${e.message}<br><br>
+        Make sure the repository is <strong>public</strong> and the folder path is correct.
+      </div>`;
+  }
+}
+
+// Auto-load if values are hardcoded above
+if (GITHUB_USER && GITHUB_REPO) loadTree();
+
+// ── Scroll-spy nav ───────────────────────────────────────────────────────────
+
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('nav a');
+const spy = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navLinks.forEach(a => a.classList.remove('active'));
+      const lnk = document.querySelector(`nav a[href="#${e.target.id}"]`);
+      if (lnk) lnk.classList.add('active');
+    }
+  });
+}, { rootMargin: '-40% 0px -55% 0px' });
+sections.forEach(s => spy.observe(s));
+</script>
+</body>
+</html>
