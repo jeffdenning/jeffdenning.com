@@ -43,14 +43,12 @@
     }
 
     /* Header */
-    .page-header {
-      background: var(--ut-orange);
-    }
     header {
       display: flex;
       align-items: baseline;
       justify-content: space-between;
       padding: 2.25rem 0 2rem;
+      border-bottom: 1px solid var(--rule);
       flex-wrap: wrap;
       gap: 0.75rem;
     }
@@ -59,7 +57,7 @@
       font-size: 1.6rem;
       font-weight: 700;
       letter-spacing: -0.01em;
-      color: #fff;
+      color: var(--ink);
     }
     nav { display: flex; gap: 1.6rem; flex-wrap: wrap; }
     nav a {
@@ -67,11 +65,11 @@
       font-weight: 500;
       letter-spacing: 0.04em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.8);
+      color: var(--ut-orange);
       transition: color 0.15s;
     }
-    nav a:hover { color: #fff; text-decoration: none; }
-    nav a.active { color: #fff; border-bottom: 1.5px solid #fff; padding-bottom: 1px; }
+    nav a:hover { color: var(--ink); text-decoration: none; }
+    nav a.active { color: var(--ink); border-bottom: 1.5px solid var(--ink); padding-bottom: 1px; }
 
     /* Sections */
     section {
@@ -255,23 +253,18 @@
   </style>
 </head>
 <body>
-
-<div class="page-header">
-  <div class="site">
-    <header>
-      <span class="site-name">Jeff Denning</span>
-      <nav>
-        <a href="#about">About</a>
-        <a href="#research">Research</a>
-        <a href="#cv">CV</a>
-        <a href="#teaching">Teaching</a>
-        <a href="personal.html">Personal</a>
-      </nav>
-    </header>
-  </div>
-</div>
-
 <div class="site">
+
+  <header>
+    <span class="site-name">Jeff Denning</span>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#cv">CV</a>
+      <a href="#teaching">Teaching</a>
+      <a href="personal.html">Personal</a>
+    </nav>
+  </header>
 
   <main>
 
