@@ -16,6 +16,7 @@
       --bg:         #faf9f7;
       --accent:     #2a5caa;
       --accent-h:   #1e4690;
+      --ut-orange:  #BF5700;
       --serif:      'Libre Baskerville', Georgia, serif;
       --sans:       'DM Sans', system-ui, sans-serif;
       --max:        760px;
@@ -42,21 +43,23 @@
     }
 
     /* Header */
+    .page-header {
+      background: var(--ut-orange);
+    }
     header {
       display: flex;
       align-items: baseline;
       justify-content: space-between;
       padding: 2.25rem 0 2rem;
-      border-bottom: 1px solid var(--rule);
       flex-wrap: wrap;
       gap: 0.75rem;
     }
     .site-name {
       font-family: var(--serif);
-      font-size: 1.15rem;
+      font-size: 1.6rem;
       font-weight: 700;
       letter-spacing: -0.01em;
-      color: var(--ink);
+      color: #fff;
     }
     nav { display: flex; gap: 1.6rem; flex-wrap: wrap; }
     nav a {
@@ -64,11 +67,11 @@
       font-weight: 500;
       letter-spacing: 0.04em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: rgba(255,255,255,0.8);
       transition: color 0.15s;
     }
-    nav a:hover { color: var(--ink); text-decoration: none; }
-    nav a.active { color: var(--ink); border-bottom: 1.5px solid var(--ink); padding-bottom: 1px; }
+    nav a:hover { color: #fff; text-decoration: none; }
+    nav a.active { color: #fff; border-bottom: 1.5px solid #fff; padding-bottom: 1px; }
 
     /* Sections */
     section {
@@ -252,18 +255,23 @@
   </style>
 </head>
 <body>
-<div class="site">
 
-  <header>
-    <span class="site-name">Jeff Denning</span>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#research">Research</a>
-      <a href="#cv">CV</a>
-      <a href="#teaching">Teaching</a>
-      <a href="personal.html">Personal</a>
-    </nav>
-  </header>
+<div class="page-header">
+  <div class="site">
+    <header>
+      <span class="site-name">Jeff Denning</span>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#cv">CV</a>
+        <a href="#teaching">Teaching</a>
+        <a href="personal.html">Personal</a>
+      </nav>
+    </header>
+  </div>
+</div>
+
+<div class="site">
 
   <main>
 
@@ -280,9 +288,7 @@
             and a <a href="https://www.cesifo.org/en">CESifo</a> Research Affiliate.
           </p>
           <p>
-            My research focuses on the economics of education — with particular emphasis on
-            student loans, college completion, financial aid, and how institutions respond
-            to policy changes.
+            My research focuses on the economics of education.
           </p>
           <div class="bio-meta">
             <span>📧 <a href="/cdn-cgi/l/email-protection#b9d3dcdfdfdddcd7d7d0d7def9cccddcc1d8ca97dcddcc"><span class="__cf_email__" data-cfemail="2a404f4c4c4e4f444443444d6a5f5e4f524b59044f4e5f">[email&#160;protected]</span></a></span>
