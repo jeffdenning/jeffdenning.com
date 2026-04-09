@@ -424,57 +424,52 @@
     <section id="teaching">
       <h2 class="section-label">Teaching</h2>
 
-      <p class="teaching-intro">
-        Course materials are served directly from a public GitHub repository — no manual updates
-        needed on the website. Just push files to GitHub and they appear here automatically.<br><br>
-        Organize your repo with a folder per course:<br>
-        <code>teaching/Economics-of-Education/syllabus.pdf</code><br>
-        <code>teaching/Economics-of-Education/lecture-01.pdf</code><br>
-        <code>teaching/Applied-Econometrics/syllabus.pdf</code>
-      </p>
+      <div class="research-group">
+        <div class="research-group-label">PA 397C — Program Evaluation &nbsp;·&nbsp; UT Austin</div>
 
-      <!--
-        ════════════════════════════════════════════════════════
-        SETUP — do this once:
-
-        1. Go to github.com and create a free account (or log in)
-        2. Create a new PUBLIC repository (e.g. "website" or "teaching")
-        3. Inside the repo, create a folder called "teaching"
-        4. Add one subfolder per course, drop your PDFs in each
-        5. Enter your username + repo name in the fields below
-           and click "Load Files" to test it
-        6. Once working, hardcode the values in the JS block at
-           the bottom of this file and remove this config panel
-
-        GitHub rate limit: 60 unauthenticated requests/hour per IP.
-        For heavy traffic or private repos, add a personal access
-        token (read-only, public_repo scope) as GITHUB_TOKEN below.
-        ════════════════════════════════════════════════════════
-      -->
-      <div class="github-config" id="configPanel">
-        <strong>⚙ One-time GitHub setup</strong>
-        <div class="config-fields">
-          <label>
-            GitHub username
-            <input type="text" id="cfg-user" placeholder="jeffdenning" />
-          </label>
-          <label>
-            Repository name
-            <input type="text" id="cfg-repo" placeholder="website" />
-          </label>
-          <label>
-            Folder path
-            <input type="text" id="cfg-path" placeholder="teaching" value="teaching" />
-          </label>
-          <button class="config-btn" onclick="loadTree()">Load Files</button>
+        <div class="paper">
+          <div class="paper-title">Syllabus</div>
+          <div class="paper-note">
+            <a href="teaching/Texas/PA%20397C/Syllabus%20PA_397C_Spring_26.pdf" target="_blank">Syllabus — Spring 2026</a>
+          </div>
         </div>
-        <p class="config-hint">
-          After confirming it works, hardcode your username and repo in the JS at the bottom of this
-          file (look for <code>GITHUB_USER</code>) and delete this config panel.
-        </p>
-      </div>
 
-      <div id="teaching-tree"></div>
+        <div class="paper">
+          <div class="paper-title">Lecture Notes</div>
+          <div class="paper-note">
+            <a href="teaching/Texas/PA%20397C/Lecture%20Notes/1%20Rubin%20Causal%20Model.pdf" target="_blank">1. Rubin Causal Model</a> &nbsp;·&nbsp;
+            <a href="teaching/Texas/PA%20397C/Lecture%20Notes/2%20Randomized%20Controlled%20Trials.pdf" target="_blank">2. Randomized Controlled Trials</a> &nbsp;·&nbsp;
+            <a href="teaching/Texas/PA%20397C/Lecture%20Notes/3%20Regression.pdf" target="_blank">3. Regression</a> &nbsp;·&nbsp;
+            <a href="teaching/Texas/PA%20397C/Lecture%20Notes/4%20Instrumental%20Variables.pdf" target="_blank">4. Instrumental Variables</a> &nbsp;·&nbsp;
+            <a href="teaching/Texas/PA%20397C/Lecture%20Notes/5%20Regression%20Discontinuity.pdf" target="_blank">5. Regression Discontinuity</a> &nbsp;·&nbsp;
+            <a href="teaching/Texas/PA%20397C/Lecture%20Notes/6%20Differences%20in%20Differences.pdf" target="_blank">6. Differences in Differences</a> &nbsp;·&nbsp;
+            <a href="teaching/Texas/PA%20397C/Lecture%20Notes/7%20Matching.pdf" target="_blank">7. Matching</a> &nbsp;·&nbsp;
+            <a href="teaching/Texas/PA%20397C/Lecture%20Notes/8%20Interrupted%20Time%20Series.pdf" target="_blank">8. Interrupted Time Series</a>
+          </div>
+        </div>
+
+        <div class="paper">
+          <div class="paper-title">Problem Sets</div>
+          <div class="paper-note">
+            <a href="teaching/Texas/PA%20397C/Problem%20Sets/Problem%20Set%201%20RCT.docx" target="_blank">Problem Set 1 — RCT</a> &nbsp;·&nbsp;
+            <a href="teaching/Texas/PA%20397C/Problem%20Sets/Problem%20Set%202%20OLS.docx" target="_blank">Problem Set 2 — OLS</a> &nbsp;·&nbsp;
+            <a href="teaching/Texas/PA%20397C/Problem%20Sets/Problem%20Set%203%20IV.docx" target="_blank">Problem Set 3 — IV</a> &nbsp;·&nbsp;
+            <a href="teaching/Texas/PA%20397C/Problem%20Sets/Problem%20Set%204%20RD.docx" target="_blank">Problem Set 4 — RD</a> &nbsp;·&nbsp;
+            <a href="teaching/Texas/PA%20397C/Problem%20Sets/Problem%20Set%205%20Differences%20in%20Differences.docx" target="_blank">Problem Set 5 — DiD</a>
+          </div>
+        </div>
+
+        <div class="paper">
+          <div class="paper-title">Other Resources</div>
+          <div class="paper-note">
+            <a href="teaching/Texas/PA%20397C/Midterm%20Fall%202020.pdf" target="_blank">Midterm — Fall 2020</a> &nbsp;·&nbsp;
+            <a href="teaching/Texas/PA%20397C/Commonly%20Asked%20Stata%20Questions.docx" target="_blank">Commonly Asked Stata Questions</a> &nbsp;·&nbsp;
+            <a href="teaching/Texas/PA%20397C/Generic%20Questions%20About%20Research%20Papers.docx" target="_blank">Questions About Research Papers</a> &nbsp;·&nbsp;
+            <a href="teaching/Texas/PA%20397C/Paper%20%26%20Presentation%20Rubric.docx" target="_blank">Paper &amp; Presentation Rubric</a>
+          </div>
+        </div>
+
+      </div>
     </section>
 
   </main>
@@ -490,207 +485,20 @@
 
 </div><!-- /.site -->
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-/* ════════════════════════════════════════════════════════════════════════════
-   GITHUB CONFIG — fill these in once your repo is set up,
-   then the config panel above is no longer needed and can be deleted.
-
-   const GITHUB_USER  = 'jeffdenning';   // your GitHub username
-   const GITHUB_REPO  = 'website';        // your repo name
-   const TEACHING_PATH = 'teaching';      // folder inside the repo
-   const GITHUB_TOKEN  = '';              // optional: personal access token
-════════════════════════════════════════════════════════════════════════════ */
-let GITHUB_USER   = '';
-let GITHUB_REPO   = '';
-let TEACHING_PATH = 'teaching';
-const GITHUB_TOKEN = '';   // leave blank for public repos
-
-const API = 'https://api.github.com';
-const treeEl = document.getElementById('teaching-tree');
-
-// ── Helpers ────────────────────────────────────────────────────────────────
-
-function apiHeaders() {
-  const h = { Accept: 'application/vnd.github.v3+json' };
-  if (GITHUB_TOKEN) h['Authorization'] = `token ${GITHUB_TOKEN}`;
-  return h;
-}
-
-function formatBytes(b) {
-  if (!b) return '';
-  if (b < 1024) return b + '\u202fB';
-  if (b < 1024 * 1024) return (b / 1024).toFixed(0) + '\u202fKB';
-  return (b / (1024 * 1024)).toFixed(1) + '\u202fMB';
-}
-
-function fileIcon(name) {
-  const ext = name.split('.').pop().toLowerCase();
-  const map = { pdf:'📄', doc:'📝', docx:'📝', xls:'📊', xlsx:'📊',
-                ppt:'📑', pptx:'📑', zip:'🗜', gz:'🗜', jpg:'🖼',
-                jpeg:'🖼', png:'🖼', gif:'🖼', svg:'🖼', r:'📋',
-                py:'📋', do:'📋', ipynb:'📋' };
-  return map[ext] || '📎';
-}
-
-function humanName(raw) {
-  // "econ-of-education_spring-2025" → "Econ of Education — Spring 2025"
-  return raw
-    .replace(/[-_]+/g, ' ')
-    .replace(/\b\w/g, c => c.toUpperCase());
-}
-
-async function fetchContents(path) {
-  const url = `${API}/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${encodeURI(path)}`;
-  const res = await fetch(url, { headers: apiHeaders() });
-  if (res.status === 403) throw new Error('Rate limit exceeded — try again in a moment, or add a GitHub token.');
-  if (res.status === 404) throw new Error(`Path not found: "${path}". Check the repo name and folder path.`);
-  if (!res.ok) throw new Error(`GitHub API error ${res.status}`);
-  return res.json();
-}
-
-// ── Render a single file row ────────────────────────────────────────────────
-
-function renderFile(item, indentLevel = 1) {
-  const div = document.createElement('div');
-  div.className = 'tree-file';
-  div.style.paddingLeft = (indentLevel * 1.5) + 'rem';
-  const url = item.download_url || `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/main/${item.path}`;
-  const label = humanName(item.name.replace(/\.[^.]+$/, '')); // strip extension for display
-  div.innerHTML = `
-    <span class="file-icon">${fileIcon(item.name)}</span>
-    <a class="file-link" href="${url}" target="_blank" rel="noopener">${label}</a>
-    <span class="file-size">${formatBytes(item.size)}</span>
-  `;
-  return div;
-}
-
-// ── Render a folder (recursive) ─────────────────────────────────────────────
-
-async function renderFolder(item, container, depth = 0) {
-  const folderDiv = document.createElement('div');
-  folderDiv.className = depth === 0 ? 'tree-folder' : 'tree-folder tree-subfolder';
-
-  const header = document.createElement('div');
-  header.className = 'tree-folder-header';
-  if (depth > 0) header.style.paddingLeft = (depth * 1.5) + 'rem';
-
-  const countId = 'cnt-' + Math.random().toString(36).slice(2);
-  header.innerHTML = `
-    <span class="chevron open">▶</span>
-    <span class="folder-name">${humanName(item.name)}</span>
-    <span class="folder-count" id="${countId}"></span>
-  `;
-
-  const filesDiv = document.createElement('div');
-  filesDiv.className = 'tree-files expanded';
-  // measure height for smooth collapse
-  filesDiv.style.maxHeight = '9999px';
-
-  header.addEventListener('click', () => {
-    const icon = header.querySelector('.chevron');
-    if (filesDiv.classList.contains('expanded')) {
-      filesDiv.style.maxHeight = filesDiv.scrollHeight + 'px';
-      requestAnimationFrame(() => {
-        filesDiv.style.maxHeight = '0';
-        filesDiv.classList.replace('expanded', 'collapsed');
-        icon.classList.replace('open', 'closed');
-      });
-    } else {
-      filesDiv.style.maxHeight = '9999px';
-      filesDiv.classList.replace('collapsed', 'expanded');
-      icon.classList.replace('closed', 'open');
-    }
-  });
-
-  folderDiv.appendChild(header);
-  folderDiv.appendChild(filesDiv);
-  container.appendChild(folderDiv);
-
-  // Load children
-  try {
-    const children = await fetchContents(item.path);
-    const dirs  = children.filter(c => c.type === 'dir');
-    const files = children.filter(c => c.type === 'file' && !c.name.startsWith('.'));
-
-    const countEl = document.getElementById(countId);
-    if (countEl) {
-      const n = files.length;
-      countEl.textContent = n + ' file' + (n !== 1 ? 's' : '');
-    }
-
-    // Sub-folders first
-    for (const sub of dirs) {
-      await renderFolder(sub, filesDiv, depth + 1);
-    }
-    // Files
-    for (const f of files) {
-      filesDiv.appendChild(renderFile(f, depth + 1));
-    }
-
-    if (dirs.length === 0 && files.length === 0) {
-      const empty = document.createElement('div');
-      empty.style.cssText = 'padding:0.5rem 0 0.5rem 1.5rem; font-size:0.82rem; color:var(--muted);';
-      empty.textContent = 'No files yet';
-      filesDiv.appendChild(empty);
-    }
-  } catch (e) {
-    const err = document.createElement('div');
-    err.className = 'tree-error';
-    err.textContent = 'Could not load folder: ' + e.message;
-    filesDiv.appendChild(err);
-  }
-}
-
-// ── Main load function ───────────────────────────────────────────────────────
-
-async function loadTree() {
-  GITHUB_USER   = (document.getElementById('cfg-user')?.value  || GITHUB_USER).trim();
-  GITHUB_REPO   = (document.getElementById('cfg-repo')?.value  || GITHUB_REPO).trim();
-  TEACHING_PATH = (document.getElementById('cfg-path')?.value  || TEACHING_PATH).trim() || 'teaching';
-
-  if (!GITHUB_USER || !GITHUB_REPO) {
-    treeEl.innerHTML = '<div class="tree-error">Please enter a GitHub username and repository name.</div>';
-    return;
-  }
-
-  treeEl.innerHTML = '<div class="tree-status"><div class="spinner"></div>Loading from GitHub…</div>';
-
-  try {
-    const items = await fetchContents(TEACHING_PATH);
-    treeEl.innerHTML = '';
-
-    const dirs  = items.filter(i => i.type === 'dir');
-    const files = items.filter(i => i.type === 'file' && !i.name.startsWith('.'));
-
-    if (dirs.length === 0 && files.length === 0) {
-      treeEl.innerHTML = '<div class="tree-status">The folder is empty. Add course subfolders and PDFs to your repo.</div>';
-      return;
-    }
-
-    const wrap = document.createElement('div');
-    wrap.className = 'file-tree';
-    treeEl.appendChild(wrap);
-
-    // Top-level loose files (unusual but handle gracefully)
-    for (const f of files) wrap.appendChild(renderFile(f, 0));
-    // Course folders
-    for (const d of dirs) await renderFolder(d, wrap, 0);
-
-  } catch (e) {
-    treeEl.innerHTML = `
-      <div class="tree-error">
-        <strong>Could not load files.</strong><br>
-        ${e.message}<br><br>
-        Make sure the repository is <strong>public</strong> and the folder path is correct.
-      </div>`;
-  }
-}
-
-// Auto-load if values are hardcoded above
-if (GITHUB_USER && GITHUB_REPO) loadTree();
-
-// ── Scroll-spy nav ───────────────────────────────────────────────────────────
+<script>
 
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('nav a');
-const spy
+const spy = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navLinks.forEach(a => a.classList.remove('active'));
+      const active = document.querySelector(`nav a[href="#${e.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { rootMargin: '-40% 0px -55% 0px' });
+sections.forEach(s => spy.observe(s));
+</script>
+</body>
+</html>
