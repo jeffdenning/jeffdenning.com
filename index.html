@@ -293,8 +293,7 @@
             </span>
           </div>
         </div>
-        <!-- Swap this for: <img class="bio-photo" src="photo.jpg" alt="Jeff Denning" /> -->
-        <div class="bio-photo-placeholder">Add photo here</div>
+        <img class="bio-photo" src="Denning_Jeff_465-0037~2.JPG" alt="Jeff Denning" />
       </div>
     </section>
 
@@ -414,10 +413,12 @@
     <!-- CV -->
     <section id="cv">
       <h2 class="section-label">CV</h2>
-      <div class="cv-row">
-        <p style="color:var(--muted); font-size:0.9rem;">Download the most recent version of my curriculum vitae.</p>
-        <a class="cv-btn" href="papers/DenningCV.pdf" target="_blank">Download CV (PDF)</a>
+      <div class="cv-row" style="margin-bottom:1.5rem;">
+        <p style="color:var(--muted); font-size:0.9rem;">View or download the most recent version of my curriculum vitae.</p>
+        <a class="cv-btn" href="papers/DenningCV.pdf" download>Download CV (PDF)</a>
+        <a class="cv-btn" href="papers/DenningCV.pdf" target="_blank" style="background:transparent;border:1.5px solid var(--accent);color:var(--accent) !important;">Open in new tab</a>
       </div>
+      <embed src="papers/DenningCV.pdf" type="application/pdf" width="100%" height="900px" style="border:1px solid var(--rule);border-radius:3px;display:block;" />
     </section>
 
     <!-- Teaching -->
